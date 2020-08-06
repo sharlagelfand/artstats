@@ -45,14 +45,11 @@ style_duo_accent(
 )
 ```
 
-
 # `r emo::ji("wave")`
 
-# [@sharlagelfand](https://twitter.com/sharlagelfand)
+## [@sharlagelfand](https://twitter.com/sharlagelfand)
 
-# [sharla.party](https://sharla.party)
-
-# [bit.ly/artstats](https://bit.ly/artstats)
+## [bit.ly/artstats](https://bit.ly/artstats)
 
 ---
 
@@ -60,31 +57,22 @@ class: center, middle, inverse
 
 # why aRt?
 
+---
+background-image: url("brain.jpg")
 
 ---
-background-image: url("art/brain.jpg")
-
----
-background-image: url("art/brain-no.jpg")
+background-image: url("brain-no.jpg")
 
 ---
 class: center, middle
 
-### U can do both
-
---
+### You can do both
 
 ### Digital art is fast, iterative, surprising
 
---
-
 ### Less "I suck at this" beginner hurdles
 
---
-
-### No startup cost
-
---
+### Less startup cost
 
 ### I `r emo::ji("heart")` R
 
@@ -291,9 +279,6 @@ include_graphics(fig_chunk("rayrender-1", "png"))
 ## [`rayrender` package](https://www.rayrender.net/)
 ]
 
-???
-
-Uses ray tracing, a rendering technique for generating images that realistically simulated how light falls on 3D models.
 ---
 
 .left-biggish[
@@ -624,6 +609,23 @@ class: inverse, middle, center
 ### - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
 
 ---
+class: middle
+
+.pull-left[
+```{r, out.width = "100%"}
+include_graphics("art/danielle-navarro-lost.png")
+```
+
+[Danielle Navarro](https://art.djnavarro.net)
+]
+
+.pull-right[
+```{r}
+include_graphics("art/danielle-navarro-pop-art.png")
+```
+]
+
+---
 
 # Generative art
 
@@ -678,23 +680,6 @@ ggplot() +
 .pull-right[
 ```{r, out.width = "80%"}
 include_graphics(fig_chunk("circle-2", "png"))
-```
-]
-
----
-class: middle
-
-.pull-left[
-```{r, out.width = "100%"}
-include_graphics("art/danielle-navarro-lost.png")
-```
-
-[Danielle Navarro](https://art.djnavarro.net)
-]
-
-.pull-right[
-```{r}
-include_graphics("art/danielle-navarro-pop-art.png")
 ```
 ]
 
@@ -909,86 +894,6 @@ include_graphics(fig_chunk("flametree-4", "png"))
 
 ---
 
-# [`jasmines` package](https://github.com/djnavarro/jasmines)
-
-.left-biggish[
-```{r jasmines, opts.label = "code_plot_side"}
-library(jasmines)
-
-use_seed(1234) %>%
-  entity_lissajous(
-    grain = 1000,
-    size = 0.1
-  ) %>%
-  unfold_warp(iterations = 50) %>%
-  style_ribbon(
-    palette = "oslo",
-    background = "pink"
-  )
-```
-
-]
-.right-lillish[
-```{r}
-include_graphics(fig_chunk("jasmines", "png"))
-```
-]
-
----
-
-# [`jasmines`](https://github.com/djnavarro/jasmines) package
-
-.left-biggish[
-```{r jasmines-2, opts.label = "code_plot_side", }
-library(jasmines)
-
-use_seed(1234) %>%
-  entity_lissajous(
-    grain = 1000,
-    size = 0.1
-  ) %>%
-  unfold_warp(iterations = 10) %>% #<<
-  style_ribbon(
-    palette = "oslo",
-    background = "pink"
-  )
-```
-]
-.right-lillish[
-```{r}
-include_graphics(fig_chunk("jasmines-2", "png"))
-```
-]
-
----
-
-# [`jasmines`](https://github.com/djnavarro/jasmines) package
-
-.left-biggish[
-```{r jasmines-3, opts.label = "code_plot_side"}
-library(jasmines)
-
-use_seed(1234) %>%
-  entity_lissajous(
-    grain = 1000,
-    size = 0.1
-  ) %>%
-  unfold_warp(iterations = 10) %>%
-  style_ribbon(
-    palette = "rainbow", #<<
-    background = "black" #<<
-  )
-```
-]
-
-.right-lillish[
-```{r}
-include_graphics(fig_chunk("jasmines-3", "png"))
-```
-]
-
----
-
 .left-big[
 ```{r, out.width = "100%"}
 include_graphics("art/thomas-lin-pedersen.png")
@@ -996,13 +901,16 @@ include_graphics("art/thomas-lin-pedersen.png")
 ]
 
 .right-lil[
-### "For me, the sweet spot of generative art lies in creating a system that you know well enough to set it up for success, but is so complex that you still get surprised when you see the result."
+<center><h4><br><br><br><br>
+"For me, the sweet spot of generative art lies in creating a system that you know well enough to set it up for success, but is so complex that you still get surprised when you see the result."
+</h4>
+</center>
 ]
 
 [Thomas Lin Pedersen](https://www.data-imaginist.com/art)
 
 ---
-# class: middle, center
+class: middle, center
 
 # And more!
 
@@ -1012,7 +920,7 @@ include_graphics("art/thomas-lin-pedersen.png")
 include_graphics("art/cedric-scherer-coffee.png")
 ```
 
-[Cédric Scherer](https://twitter.com/CedScherer)
+[Cédric Scherer](https://twitter.com/CedScherer/status/1281475431707877377)
 
 ---
 
@@ -1038,17 +946,14 @@ include_graphics("art/allison-horst-dplyr.png")
 
 [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
 
-
 ---
 
-.pull-left[
+.left-sixtyfive[
 ## ty!
 
-# [@sharlagelfand](https://twitter.com/sharlagelfand)
+[@sharlagelfand](https://twitter.com/sharlagelfand)
 
-# [sharla.party](https://sharla.party)
-
-# [bit.ly/artstats](https://bit.ly/artstats)
+[bit.ly/artstats](https://bit.ly/artstats)
 
 ## more links:
 
@@ -1063,8 +968,11 @@ include_graphics("art/allison-horst-dplyr.png")
 [Experiments in Generative Art with RStats (Sanjeev Kumar)](https://www.aamlai.com/2020/05/27/experiments-in-generative-art-with-rstats/)
 ]
 
-.pull-right[
+.right-thirtyfive[
 ```{r}
 include_graphics("is-this-art.png")
 ```
 ]
+
+---
+background-image: url("rladies.png")
