@@ -973,6 +973,3 @@ include_graphics("art/allison-horst-dplyr.png")
 include_graphics("is-this-art.png")
 ```
 ]
-
----
-background-image: url("rladies.png")
