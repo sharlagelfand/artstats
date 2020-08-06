@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Art + #rstats</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sharla Gelfand" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="pull.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Art + #rstats
+### Sharla Gelfand
+### Toronto Data Workshop
+
+---
+
+
+
+
+
+
+
+# 👋
+
+---
+
+class: center, middle, inverse
+
+# why aRt?
+
+
+---
+background-image: url("art/brain.jpg")
+
+---
+background-image: url("keyboard.jpeg")
+
+---
+background-image: url("art/brain-no.jpg")
+
+---
+
+### U can do both
+
+--
+
+### Digital art is fast, iterative, surprising
+
+--
+
+### Less "I suck at this" beginner hurdles
+
+--
+
+### No startup cost
+
+--
+
+### I &lt;3 R
+
+---
+class: inverse, middle, center
+
+# Pixel Art
+
+---
+class: middle
+
+.left-lil[
+&lt;img src="art/katie-segreti-ghost.jpg" width="667" style="display: block; margin: auto;" /&gt;
+
+[Katie Segretti](https://twitter.com/katiesegreti) (via [@WeAreRLadies](https://twitter.com/WeAreRLadies/status/1291359584179957762))
+]
+
+.right-big[
+&lt;img src="art/coolbutuseless-arcade.png" width="1792" style="display: block; margin: auto;" /&gt;
+
+[@coolbutuseless](https://coolbutuseless.github.io/2020/05/04/introducing-arcadefont-an-oldschool-arcade-vector-font-happy-star-wars-day/)
+]
+
+---
+
+.left-sixtyfive[
+
+```r
+library(ggplot2)
+library(dplyr)
+
+smile &lt;- expand.grid(x = 1:8, y = 1:8) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(2, max(x) - 1) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(2, max(y) - 1)))
+
+ggplot() +
+  geom_tile(
+    data = smile, aes(x = x, y = y), width = 1, height = 1,
+    size = 1, fill = "yellow", colour = "black"
+  ) +
+  coord_equal() +
+  theme_void()
+```
+]
+
+--
+
+.right-thirtyfive[
+&lt;img src="index_files/figure-html/smile-1-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-sixtyfive[
+
+```r
+library(ggplot2)
+library(dplyr)
+
+smile &lt;- expand.grid(x = 1:8, y = 1:8) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(2, max(x) - 1) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(2, max(y) - 1)))
+
+*eyes &lt;- data.frame(x = c(3, 6), y = c(6, 6))
+
+ggplot() +
+  geom_tile(
+    data = smile, aes(x = x, y = y), width = 1, height = 1,
+    size = 1, fill = "yellow", colour = "black"
+  ) +
+* geom_tile(
+*   data = eyes, aes(x = x, y = y), width = 1, height = 1,
+*   fill = "black", colour = "black"
+* ) +
+  coord_equal() +
+  theme_void()
+```
+]
+
+.right-thirtyfive[
+&lt;img src="index_files/figure-html/smile-2-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+---
+
+.left-sixtyfive[
+
+```r
+library(ggplot2)
+library(dplyr)
+
+smile &lt;- expand.grid(x = 1:8, y = 1:8) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(2, max(x) - 1) &amp; y %in% c(1, max(y)))) %&gt;%
+  filter(!(x %in% c(1, max(x)) &amp; y %in% c(2, max(y) - 1)))
+
+eyes &lt;- data.frame(x = c(3, 6), y = c(6, 6))
+
+*mouth &lt;- data.frame(x = 3:6, y = c(3, 2, 2, 3))
+
+ggplot() +
+  geom_tile(
+    data = smile, aes(x = x, y = y), width = 1, height = 1,
+    size = 1, fill = "yellow", colour = "black"
+  ) +
+  geom_tile(
+    data = eyes, aes(x = x, y = y), width = 1, height = 1,
+    fill = "black", colour = "black"
+  ) +
+* geom_tile(
+*   data = mouth, aes(x = x, y = y), width = 1, height = 1,
+*   fill = "black", colour = "black"
+* ) +
+  coord_equal() +
+  theme_void()
+```
+
+&lt;img src="index_files/figure-html/smile-3-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+.right-thirtyfive[
+&lt;img src="index_files/figure-html/smile-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+---
+class: center, inverse, middle
+
+# Rendering
+
+### Recreating an image (realistic or not) from a 2D or 3D model, via a computer program.
+
+---
+class: middle
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+[Sharla Gelfand](https://github.com/sharlagelfand/ggkeyboard)
+
+---
+class: middle
+
+&lt;img src="art/sarah-l-fossheim-switch.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+[Sarah L. Fossheim (CSS)](https://twitter.com/liatrisbian/status/1287475889089982469)
+
+---
+class: middle
+
+.pull-left[
+&lt;img src="art/tyler-morgan-wall-depth.png" width="922" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="art/tyler-morgan-wall-ggplot-glass.png" width="922" style="display: block; margin: auto;" /&gt;
+]
+
+[Tyler Morgan-Wall](https://www.tylermw.com/)
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  render_scene()
+```
+
+
+]
+
+--
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-1-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+???
+
+Uses ray tracing, a rendering technique for generating images that realistically simulated how light falls on 3D models.
+---
+
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+* add_object(sphere(
+*   material = diffuse(color = "#99badd")
+* )) %&gt;%
+  render_scene()
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-2-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+  render_scene(
+*   fov = 40
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+* add_object(sphere(
+*   x = 2, radius = 0.5,
+*   material = dielectric(color = "#badd99")
+* )) %&gt;%
+  render_scene(
+    fov = 40
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-4-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99")
+  )) %&gt;%
+* add_object(cube(
+*   x = -2, z = -1, width = 1,
+*   material = metal(color = "#99ddba")
+* )) %&gt;%
+  render_scene(
+    fov = 40
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-5-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99")
+  )) %&gt;%
+  add_object(cube(
+    x = -2, z = -1, width = 1,
+    material = metal(color = "#99ddba")
+  )) %&gt;%
+* add_object(pig(
+*   y = 1, z = 1,
+*   scale = 0.4, angle = c(0, -60, 0)
+* )) %&gt;%
+  render_scene(
+    fov = 40
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-6-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-biggish[
+
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99")
+  )) %&gt;%
+  add_object(cube(
+    x = -2, z = -1, width = 1,
+    material = metal(color = "#99ddba")
+  )) %&gt;%
+  add_object(pig(
+    y = 1, z = 1,
+    scale = 0.4, angle = c(0, -60, 0)
+  )) %&gt;%
+  render_scene(
+    fov = 40,
+*   lookfrom = c(-1, 4, 0)
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-7-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: inverse, middle, center
+
+# Generative art
+
+### "Generative art is art programmed using a computer that intentionally introduces randomness as part of its creation process." - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
+
+---
+
+# Generative art
+
+The environment is constrained, but decisions are made randomly, rather than by the artist.
+
+.pull-left[
+
+```r
+library(ggplot2)
+library(ggforce)
+
+n &lt;- 5
+
+ggplot() +
+  geom_circle(aes(
+    x0 = rnorm(n),
+    y0 = rnorm(n),
+    r = runif(n)
+  )) +
+  theme_void()
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/circle-1-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Generative art
+
+Additional complexity doesn't mean additional time or effort.
+
+.pull-left[
+
+```r
+library(ggplot2)
+library(ggforce)
+
+*n &lt;- 100
+
+ggplot() +
+  geom_circle(aes(
+    x0 = rnorm(n),
+    y0 = rnorm(n),
+    r = runif(n)
+  )) +
+  theme_void()
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/circle-2-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: middle
+
+.pull-left[
+&lt;img src="art/danielle-navarro-lost.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+[Danielle Navarro](https://art.djnavarro.net)
+]
+
+.pull-right[
+&lt;img src="art/danielle-navarro-pop-art.png" width="4000" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`generativeart`](https://github.com/cutterkom/generativeart) package
+
+
+
+.left-biggish[
+
+```r
+library(generativeart)
+
+formula &lt;- list(
+  x = quote(rnorm(5) * x_i - cos(y_i^2)),
+  y = quote(rnorm(5) * y_i^2 + sin(x_i))
+)
+
+generate_img(
+  formula = formula,
+  polar = FALSE,
+  nr_of_img = 1
+)
+```
+]
+
+--
+
+.right-lillish[
+&lt;img src="img/everything/2020-08-05-19-13_seed_8300.png" width="2400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`generativeart`](https://github.com/cutterkom/generativeart) package
+
+.left-biggish[
+
+```r
+library(generativeart)
+
+formula &lt;- list(
+  x = quote(rnorm(5) * x_i - cos(y_i^2)),
+  y = quote(rnorm(5) * y_i^2 + sin(x_i))
+)
+
+generate_img(
+  formula = formula,
+* polar = TRUE,
+* nr_of_img = 2
+)
+```
+
+Seed: 2917
+]
+
+.right-lillish[
+&lt;img src="img/everything/2020-08-05-19-15_seed_2917.png" width="2400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`generativeart`](https://github.com/cutterkom/generativeart) package
+
+.left-biggish[
+
+```r
+library(generativeart)
+
+formula &lt;- list(
+  x = quote(rnorm(5) * x_i - cos(y_i^2)),
+  y = quote(rnorm(5) * y_i^2 + sin(x_i))
+)
+
+generate_img(
+  formula = formula,
+* polar = TRUE,
+* nr_of_img = 2
+)
+```
+
+Seed: 3553
+]
+
+.right-lillish[
+&lt;img src="img/everything/2020-08-05-19-15_seed_3553.png" width="2400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`generativeart`](https://github.com/cutterkom/generativeart) package
+
+.left-biggish[
+
+```r
+library(generativeart)
+
+formula &lt;- list(
+* x = quote(runif(5) * x_i - cos(y_i^2)),
+  y = quote(rnorm(5) * y_i^2 + sin(x_i))
+)
+
+generate_img(
+  formula = formula,
+  polar = TRUE,
+  nr_of_img = 1, 
+* color = "red"
+)
+```
+]
+.right-lillish[
+&lt;img src="img/everything/2020-08-05-19-24_seed_1351.png" width="2400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`flametree` package](https://github.com/djnavarro/flametree/)
+
+.left-biggish[
+
+```r
+library(flametree)
+
+flametree_grow(
+  seed = 1234,
+  time = 1,
+  split = 2
+) %&gt;%
+  flametree_plot()
+```
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/flametree-1-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# [`flametree` package](https://github.com/djnavarro/flametree/)
+  
+.left-biggish[
+
+```r
+library(flametree)
+
+flametree_grow(
+  seed = 1234,
+* time = 2,
+  split = 2
+) %&gt;%
+  flametree_plot()
+```
+  ]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/flametree-2-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# [`flametree` package](https://github.com/djnavarro/flametree/)
+  
+.left-biggish[
+
+```r
+library(flametree)
+
+flametree_grow(
+  seed = 1234,
+  time = 2,
+* split = 4
+) %&gt;%
+  flametree_plot()
+```
+  ]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/flametree-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# [`flametree` package](https://github.com/djnavarro/flametree/)
+  
+.left-biggish[
+
+```r
+library(flametree)
+
+flametree_grow(
+  seed = 1234,
+* time = 5,
+  split = 4 
+) %&gt;%
+  flametree_plot(
+*   background = "pink",
+*   palette = "ggthemes::Classic Red-Green Light"
+)
+```
+  ]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/flametree-4-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`jasmines` package](https://github.com/djnavarro/jasmines)
+
+.left-biggish[
+
+```r
+library(jasmines)
+
+use_seed(1234) %&gt;%
+  entity_lissajous(
+    grain = 1000,
+    size = 0.1
+  ) %&gt;%
+  unfold_warp(iterations = 50) %&gt;%
+  style_ribbon(
+    palette = "oslo",
+    background = "pink"
+  )
+```
+
+]
+.right-lillish[
+&lt;img src="index_files/figure-html/jasmines-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`jasmines`](https://github.com/djnavarro/jasmines) package
+
+.left-biggish[
+
+```r
+library(jasmines)
+
+use_seed(1234) %&gt;%
+  entity_lissajous(
+    grain = 1000,
+    size = 0.1
+  ) %&gt;%
+* unfold_warp(iterations = 10) %&gt;%
+  style_ribbon(
+    palette = "oslo",
+    background = "pink"
+  )
+```
+]
+.right-lillish[
+&lt;img src="index_files/figure-html/jasmines-2-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# [`jasmines`](https://github.com/djnavarro/jasmines) package
+
+.left-biggish[
+
+```r
+library(jasmines)
+
+use_seed(1234) %&gt;%
+  entity_lissajous(
+    grain = 1000,
+    size = 0.1
+  ) %&gt;%
+  unfold_warp(iterations = 10) %&gt;%
+  style_ribbon(
+*   palette = "rainbow",
+*   background = "black"
+  )
+```
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/jasmines-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.left-big[
+&lt;img src="art/thomas-lin-pedersen.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.right-lil[
+### "For me, the sweet spot of generative art lies in creating a system that you know well enough to set it up for success, but is so complex that you still get surprised when you see the result."
+]
+
+[Thomas Lin Pedersen](https://www.data-imaginist.com/art)
+
+---
+
+# Everything else I didn't have time to talk about
+
+---
+
+&lt;img src="art/cedric-scherer-coffee.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+[Cédric Scherer](https://twitter.com/CedScherer)
+
+---
+
+&lt;img src="art/ryan-timpe-warhol.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+[Ryan Timpe](https://twitter.com/ryantimpe/status/1280241868123627521)
+
+---
+
+&lt;img src="art/allison-horst-rmarkdown.png" width="66%" style="display: block; margin: auto;" /&gt;
+
+[Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+
+---
+
+&lt;img src="art/allison-horst-dplyr.png" width="66%" style="display: block; margin: auto;" /&gt;
+
+[Allison Horst](https://github.com/allisonhorst/stats-illustrations)
+
+---
+
+---
+
+# Thank you!
+
+@sharlagelfand
+
+bit.ly/artstats
+
+## Links:
+
+[`rayshader`:]
+
+[`ambient`: A Generator of Multidimensional Noise](https://ambient.data-imaginist.com)
+
+[12 Months of aRt (Will Chase)](https://www.williamrchase.com/work/art/)
+
+[Fronkonstin (Antonio Sánchez Chinchón)](https://fronkonstin.com/)
+
+[Experiments in Generative Art with RStats](https://www.aamlai.com/2020/05/27/experiments-in-generative-art-with-rstats/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

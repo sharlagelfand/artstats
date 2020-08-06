@@ -1,0 +1,58 @@
+.left-lil {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+}
+.right-big {
+  width: 60%;
+  float: right;
+  padding-left: 1%;
+}
+
+.right-lil {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: right;
+}
+.left-big {
+  width: 75%;
+  float: left;
+  padding-right: 1%;
+}
+
+.left-lillish {
+  color: #777;
+  width: 45%;
+  height: 92%;
+  float: left;
+}
+.right-biggish {
+  width: 54%;
+  float: right;
+  padding-left: 1%;
+}
+
+.right-lillish {
+  color: #777;
+  width: 42%;
+  height: 92%;
+  float: right;
+}
+.left-biggish {
+  width: 55%;
+  float: left;
+  padding-right: 1%;
+}
+
+.left-sixtyfive {
+  color: #777;
+  width: 65%;
+  float: left;
+}
+.right-thirtyfive {
+  width: 34%;
+  float: right;
+  padding-left: 1%;
+}
