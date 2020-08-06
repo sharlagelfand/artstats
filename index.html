@@ -17,6 +17,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
+class: middle, center
 
 
 
@@ -24,6 +25,12 @@ class: center, middle, inverse, title-slide
 
 
 # 👋
+
+# [@sharlagelfand](https://twitter.com/sharlagelfand)
+
+# [sharla.party](https://sharla.party)
+
+# [bit.ly/artstats](https://bit.ly/artstats)
 
 ---
 
@@ -36,12 +43,10 @@ class: center, middle, inverse
 background-image: url("art/brain.jpg")
 
 ---
-background-image: url("keyboard.jpeg")
-
----
 background-image: url("art/brain-no.jpg")
 
 ---
+class: center, middle
 
 ### U can do both
 
@@ -59,12 +64,15 @@ background-image: url("art/brain-no.jpg")
 
 --
 
-### I &lt;3 R
+### I ❤️ R
 
 ---
 class: inverse, middle, center
 
 # Pixel Art
+
+### A form of digital art where images are edited at the pixel level. 
+### Think 8-bit video games aesthetics.
 
 ---
 class: middle
@@ -207,7 +215,7 @@ class: middle
 class: middle
 
 .pull-left[
-&lt;img src="art/tyler-morgan-wall-depth.png" width="922" style="display: block; margin: auto;" /&gt;
+&lt;img src="art/tyler-morgan-wall-elmat.png" width="922" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -235,13 +243,14 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-1-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ???
 
 Uses ray tracing, a rendering technique for generating images that realistically simulated how light falls on 3D models.
 ---
-
 
 .left-biggish[
 
@@ -262,31 +271,8 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-2-1.png" width="672" style="display: block; margin: auto;" /&gt;
-]
 
----
-
-.left-biggish[
-
-```r
-library(rayrender)
-
-generate_ground(
-  material = diffuse(color = "#dd99ba")
-  ) %&gt;%
-  add_object(sphere(
-    material = diffuse(color = "#99badd")
-  )) %&gt;%
-  render_scene(
-*   fov = 40
-  )
-```
-
-
-]
-
-.right-lillish[
-&lt;img src="index_files/figure-html/rayrender-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -307,7 +293,37 @@ generate_ground(
 *   material = dielectric(color = "#badd99")
 * )) %&gt;%
   render_scene(
-    fov = 40
+  )
+```
+
+
+]
+
+.right-lillish[
+&lt;img src="index_files/figure-html/rayrender-3-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
+]
+
+---
+
+.left-biggish[
+
+```r
+library(rayrender)
+
+generate_ground(
+  material = diffuse(color = "#dd99ba")
+  ) %&gt;%
+  add_object(sphere(
+    material = diffuse(color = "#99badd")
+  )) %&gt;%
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99"
+  )) %&gt;%
+  render_scene(
+*   fov = 40
   )
 ```
 
@@ -316,6 +332,8 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-4-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 ---
 
@@ -348,6 +366,8 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-5-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -385,6 +405,8 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-6-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -424,6 +446,8 @@ generate_ground(
 
 .right-lillish[
 &lt;img src="index_files/figure-html/rayrender-7-1.png" width="672" style="display: block; margin: auto;" /&gt;
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -431,7 +455,8 @@ class: inverse, middle, center
 
 # Generative art
 
-### "Generative art is art programmed using a computer that intentionally introduces randomness as part of its creation process." - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
+### "Generative art is art programmed using a computer that intentionally introduces randomness as part of its creation process." 
+### - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
 
 ---
 
@@ -499,7 +524,7 @@ class: middle
 ]
 
 .pull-right[
-&lt;img src="art/danielle-navarro-pop-art.png" width="4000" style="display: block; margin: auto;" /&gt;
+&lt;img src="art/danielle-navarro-pop-art.png" width="1333" style="display: block; margin: auto;" /&gt;
 ]
 
 ---

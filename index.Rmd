@@ -12,6 +12,7 @@ output:
       countIncrementalSlides: false
       ratio: 16:9
 ---
+class: middle, center
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -47,6 +48,12 @@ style_duo_accent(
 
 # `r emo::ji("wave")`
 
+# [@sharlagelfand](https://twitter.com/sharlagelfand)
+
+# [sharla.party](https://sharla.party)
+
+# [bit.ly/artstats](https://bit.ly/artstats)
+
 ---
 
 class: center, middle, inverse
@@ -58,12 +65,10 @@ class: center, middle, inverse
 background-image: url("art/brain.jpg")
 
 ---
-background-image: url("keyboard.jpeg")
-
----
 background-image: url("art/brain-no.jpg")
 
 ---
+class: center, middle
 
 ### U can do both
 
@@ -81,12 +86,15 @@ background-image: url("art/brain-no.jpg")
 
 --
 
-### I <3 R
+### I `r emo::ji("heart")` R
 
 ---
 class: inverse, middle, center
 
 # Pixel Art
+
+### A form of digital art where images are edited at the pixel level. 
+### Think 8-bit video games aesthetics.
 
 ---
 class: middle
@@ -240,7 +248,7 @@ class: middle
 
 .pull-left[
 ```{r, dpi = 100}
-include_graphics("art/tyler-morgan-wall-depth.png")
+include_graphics("art/tyler-morgan-wall-elmat.png")
 ```
 ]
 
@@ -279,13 +287,14 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-1", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ???
 
 Uses ray tracing, a rendering technique for generating images that realistically simulated how light falls on 3D models.
 ---
-
 
 .left-biggish[
 ```{r,  echo = TRUE, eval = FALSE}
@@ -317,6 +326,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-2", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -331,8 +342,11 @@ generate_ground(
   add_object(sphere(
     material = diffuse(color = "#99badd")
   )) %>%
+  add_object(sphere( #<<
+    x = 2, radius = 0.5, #<<
+    material = dielectric(color = "#badd99") #<<
+  )) %>% #<<
   render_scene(
-    fov = 40 #<<
   )
 ```
 
@@ -345,8 +359,11 @@ generate_ground(
   add_object(sphere(
     material = diffuse(color = "#99badd")
   )) %>%
+  add_object(sphere( #<<
+    x = 2, radius = 0.5, #<<
+    material = dielectric(color = "#badd99") #<<
+  )) %>% #<<
   render_scene(
-    fov = 40,
     progress = FALSE
   )
 ```
@@ -356,6 +373,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-3", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -370,12 +389,12 @@ generate_ground(
   add_object(sphere(
     material = diffuse(color = "#99badd")
   )) %>%
-  add_object(sphere( #<<
-    x = 2, radius = 0.5, #<<
-    material = dielectric(color = "#badd99") #<<
-  )) %>% #<<
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99"
+  )) %>%
   render_scene(
-    fov = 40
+    fov = 40 #<<
   )
 ```
 
@@ -388,10 +407,10 @@ generate_ground(
   add_object(sphere(
     material = diffuse(color = "#99badd")
   )) %>%
-  add_object(sphere( #<<
-    x = 2, radius = 0.5, #<<
-    material = dielectric(color = "#badd99") #<<
-  )) %>% #<<
+  add_object(sphere(
+    x = 2, radius = 0.5,
+    material = dielectric(color = "#badd99")
+  )) %>% 
   render_scene(
     fov = 40,
     progress = FALSE
@@ -403,6 +422,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-4", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 ---
 
@@ -457,6 +478,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-5", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -520,6 +543,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-6", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -586,6 +611,8 @@ generate_ground(
 ```{r}
 include_graphics(fig_chunk("rayrender-7", "png"))
 ```
+
+## [`rayrender` package](https://www.rayrender.net/)
 ]
 
 ---
@@ -593,7 +620,8 @@ class: inverse, middle, center
 
 # Generative art
 
-### "Generative art is art programmed using a computer that intentionally introduces randomness as part of its creation process." - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
+### "Generative art is art programmed using a computer that intentionally introduces randomness as part of its creation process." 
+### - [Why Love Generative Art?](https://www.artnome.com/news/2018/8/8/why-love-generative-art)
 
 ---
 
@@ -974,8 +1002,9 @@ include_graphics("art/thomas-lin-pedersen.png")
 [Thomas Lin Pedersen](https://www.data-imaginist.com/art)
 
 ---
+# class: middle, center
 
-# Everything else I didn't have time to talk about
+# And more!
 
 ---
 
@@ -1009,19 +1038,21 @@ include_graphics("art/allison-horst-dplyr.png")
 
 [Allison Horst](https://github.com/allisonhorst/stats-illustrations)
 
----
 
 ---
 
-# Thank you!
+.pull-left[
+## ty!
 
-@sharlagelfand
+# [@sharlagelfand](https://twitter.com/sharlagelfand)
 
-bit.ly/artstats
+# [sharla.party](https://sharla.party)
 
-## Links:
+# [bit.ly/artstats](https://bit.ly/artstats)
 
-[`rayshader`:]
+## more links:
+
+[`rayshader`: Create Maps and Visualize Data in 2D and 3D](https://www.rayshader.com/)
 
 [`ambient`: A Generator of Multidimensional Noise](https://ambient.data-imaginist.com)
 
@@ -1029,4 +1060,11 @@ bit.ly/artstats
 
 [Fronkonstin (Antonio Sánchez Chinchón)](https://fronkonstin.com/)
 
-[Experiments in Generative Art with RStats](https://www.aamlai.com/2020/05/27/experiments-in-generative-art-with-rstats/)
+[Experiments in Generative Art with RStats (Sanjeev Kumar)](https://www.aamlai.com/2020/05/27/experiments-in-generative-art-with-rstats/)
+]
+
+.pull-right[
+```{r}
+include_graphics("is-this-art.png")
+```
+]
